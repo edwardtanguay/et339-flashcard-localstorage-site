@@ -1,5 +1,5 @@
 import './style.scss'
-import { addEventsToFlashcardFronts } from './tools';
+import * as tools from './tools';
 
 const appData = {
 	title: "Flashcards",
@@ -36,6 +36,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 			</div>`
 }).join('')}
 </div>
+<div class="debugArea">
+<hr>
+<pre class="showAppData"></pre>
+</div>
 `;
 
-addEventsToFlashcardFronts();
+tools.addEventsToFlashcardFronts(appData);
+tools.showAppData(appData);
