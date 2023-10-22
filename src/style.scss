@@ -10,9 +10,10 @@ body {
 			padding: 1rem;
 			width: fit-content;
 			border-radius: .5rem;
-		
+
 			.front {
-				color: rgb(255, 255, 255)
+				color: rgb(255, 255, 255);
+				cursor: pointer;
 			}
 
 			.back {
