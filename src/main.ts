@@ -2,45 +2,39 @@ import './style.scss'
 import * as tools from './tools';
 
 const appData = {
-	title: "Flashcards",
+	titleTesting: "Flashcards being tested",
+	titleLearned: "Flashcards learned",
 	flashcards: [
 		{
 			front: "in view of the situation",
 			back: "in Anbetracht der Situation",
 			showingBack: false,
-			status: "learning"
+			status: "testing"
 		},
 		{
 			front: "the negotiation",
 			back: "die Verhandlung",
 			showingBack: false,
-			status: "learning"
+			status: "testing"
 		},
 		{
 			front: "comprehensive",
 			back: "umfassend",
 			showingBack: false,
-			status: "learning"
+			status: "testing"
 		}
 	]
 }
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<h1>${appData.title}</h1>
-<div class="flashcards">
-	${appData.flashcards.map(flashcard => {
-	return `
-			<div class="flashcard">
-				<div class="front">${flashcard.front}</div>
-				<div class="back">${flashcard.back}</div>
-			</div>`
-}).join('')}
-</div>
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
+<h1>${appData.titleTesting}</h1>
+<div class="flashcards"> </div>
 <div class="debugArea">
-<hr>
-<pre class="showAppData"></pre>
+	<hr>
+	<pre class="showAppData"></pre>
+	<hr>
 </div>
+<h2>${appData.titleLearned}</h2>
 `;
 
-tools.addEventsToFlashcardFronts(appData);
-tools.showAppData(appData);
+tools.redrawSite(appData);

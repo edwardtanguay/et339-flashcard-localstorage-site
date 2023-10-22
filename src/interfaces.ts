@@ -5,6 +5,7 @@ export interface IFlashcard {
 	status: string;
 }
 export interface IAppData {
-	title: string;
+	titleTesting: string;
+	titleLearned: string;
 	flashcards: IFlashcard[];
 }

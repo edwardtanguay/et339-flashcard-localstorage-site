@@ -20,7 +20,9 @@ body {
 				color: yellow;
 				font-style: italic;
 				margin-top: .5rem;
-				display: none;
+				.buttonArea {
+					margin-top: .5rem;
+				}
 			}
 		}
 	}
