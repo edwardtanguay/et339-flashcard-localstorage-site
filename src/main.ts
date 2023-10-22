@@ -1,4 +1,5 @@
 import './style.scss'
+import { addEventsToFlashcardFronts } from './tools';
 
 const appData = {
 	title: "Flashcards",
@@ -37,12 +38,4 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 </div>
 `;
 
-const frontElems = document.querySelectorAll<HTMLDivElement>('.front');
-for (const frontElem of frontElems) {
-	frontElem.addEventListener('click', () => {
-		const backElem = frontElem.nextElementSibling;
-		if (backElem) {
-			(backElem as HTMLDivElement).style.display = 'block';
-		}
-	})
-}
+addEventsToFlashcardFronts();
