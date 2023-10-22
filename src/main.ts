@@ -1,4 +1,4 @@
-import './style.css'
+import './style.scss'
 
 const flashcards = [
 	{
@@ -25,7 +25,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 	return `
 			<div class="flashcard">
 				<div class="front">${flashcard.front}</div>
-				<div class="front">${flashcard.back}</div>
+				<div class="back">${flashcard.back}</div>
 			</div>`
 }).join('')}
 </div>
