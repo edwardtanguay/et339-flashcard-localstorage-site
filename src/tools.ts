@@ -1,5 +1,15 @@
 import { IAppData } from "./interfaces";
 import * as tools from './tools';
+import _appData from './data/appData.json';
+
+export const restoreSiteState = (): IAppData => {
+	const localStorageAppState = localStorage.getItem('appData');
+	if (localStorageAppState) {
+		return JSON.parse(localStorageAppState);
+	} else {
+		return _appData;
+	}
+}
 
 export const redrawSite = (appData: IAppData) => {
 
@@ -44,6 +54,7 @@ export const redrawSite = (appData: IAppData) => {
 	}
 	tools.addEventsToFlashcardFronts(appData);
 	tools.addEventsToButtons(appData);
+	localStorage.setItem('appData', JSON.stringify(appData));
 }
 
 export const addEventsToFlashcardFronts = (appData: IAppData) => {
