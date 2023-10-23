@@ -3,26 +3,44 @@ import * as tools from './tools';
 
 export const redrawSite = (appData: IAppData) => {
 
-	const flashcardElems = document.querySelector('.flashcards');
-	if (flashcardElems) {
-		flashcardElems.innerHTML = `
+	// FLASHCARDS BEING TESTED
+	const testedFlashcardElems = document.querySelector('.testedFlashcards');
+	if (testedFlashcardElems) {
+		testedFlashcardElems.innerHTML = `
 			${appData.flashcards.map(flashcard => {
-			return `
-			<div class="flashcard">
-				<div class="front">${flashcard.front}</div>
-				<div class="back" ${flashcard.showingBack ? 'style="display: block"' : 'style="display: none"'}><span class="text">${flashcard.back}</span>
-					<div class="buttonArea">
-						<button>test again</button>
-						<button>learned</button>
+			if (flashcard.status === 'testing') {
+				return `
+				<div class="flashcard">
+					<div class="front">${flashcard.front}</div>
+					<div class="back" ${flashcard.showingBack ? 'style="display: block"' : 'style="display: none"'}><span class="text">${flashcard.back}</span>
+						<div class="buttonArea">
+							<button>test again</button>
+							<button>learned</button>
+						</div>
 					</div>
-				</div>
-			</div>`
+				</div>`
+			}
 		}).join('')}`
 	}
 
+	// APPDATA
 	const showAppDataElem = document.querySelector<HTMLPreElement>('.showAppData');
 	if (showAppDataElem) {
 		showAppDataElem.innerText = JSON.stringify(appData, null, 2);
+	}
+
+	// FLASHCARDS LEARNED
+	const learnedFlashcards = document.querySelector('.learnedFlashcards');
+	if (learnedFlashcards) {
+		learnedFlashcards.innerHTML = `
+		<ol>
+			${appData.flashcards.map(flashcard => {
+			if (flashcard.status === 'learned') {
+				return `
+				<li>${flashcard.front} = <strong>${flashcard.back}</strong></li>`
+			}
+			}).join('')}
+		</ol>`
 	}
 	tools.addEventsToFlashcardFronts(appData);
 	tools.addEventsToButtons(appData);
